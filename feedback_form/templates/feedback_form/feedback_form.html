@@ -1,0 +1,73 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'feedback_form/css/form_styles.css' %}">
+<div id="feedbackFormSection" class="d-flex justify-content-center">
+  <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 px-4 py-4">
+    <h2 class="text-center mb-3" id="feedback">Feedback form</h2>
+    <form id="feedbackForm" method="post" action="">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="id_email" class="form-label fw-semibold">Your email:</label>
+        <input type="email" name="email" class="form-control feedback-form-control" maxlength="320" required id="id_email">
+        <div id="emailErrors" class="fw-semibold mt-3 text-danger d-none"></div>
+      </div>
+      <div id="emailConfirmationGroup" class="mb-3 d-none">
+        <button type="button" id="confirmEmailButton" class="btn btn-dark fw-semibold px-4 mb-3">Confirm email</button>
+        <div class="recaptcha-container">
+          <script defer src='https://www.google.com/recaptcha/api.js'></script>
+          <div class="g-recaptcha" data-sitekey="{{ recaptcha_public_key }}" data-callback="captchaFilled"></div>
+        </div>
+        <p id="emailConfirmationGroupErrorMessage" class="fw-semibold mt-3 text-danger d-none"></p>
+      </div>
+      <p id="generalErrorMessage" class="fw-semibold mb-3 text-danger d-none"></p>
+      <p id="generalInfoMessage" class="fw-semibold mb-3 d-none"></p>
+      <div id="codeFieldGroup" class="mb-3 d-none">
+        <label for="id_code" class="form-label fw-semibold">Confirmation code:</label>
+        <input type="text" name="code" class="form-control feedback-form-control" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" required id="id_code">
+        <div id="codeErrors" class="fw-semibold mt-3 text-danger d-none"></div>
+        <p id="codeFieldGroupErrorMessage" class="fw-semibold mt-3 text-danger d-none"></p>
+        <p id="codeFieldGroupValidationCounter" class="fw-semibold mt-3 text-danger d-none"></p>
+        <p id="emailResendSection" class="fw-semibold mt-3 d-none"></p>
+      </div>
+      <div class="mb-3">
+        <label for="id_message" class="form-label fw-semibold">Message:</label>
+        <textarea name="message" cols="40" rows="5" class="form-control feedback-form-control" placeholder="Enter the message you would like to send us. We will receive it and contact you by email." required id="id_message"></textarea>
+        <div id="messageErrors" class="fw-semibold mt-3 text-danger d-none"></div>
+      </div>
+      <div id="generalFormErrors" class="fw-semibold mt-3 text-danger d-none"></div>
+      <div class="mb-3">
+        <noscript class="fw-bold text-danger">Please enable JavaScript in your browser to use the form!</noscript>
+      </div>
+      <button id="submitFormButton" type="submit" class="btn btn-dark w-100 fw-bold mb-3">Send</button>
+    </form>
+  </div>
+</div>
+
+<!-- Validation error modal -->
+<div class="modal fade" id="errorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h1 class="modal-title fs-5" id="errorModalLabel">Error in filling out the form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="feedbackModalBtnClose"></button>
+      </div>
+      <div class="modal-body border-0">
+        <div id="modalErrorListContainer"></div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-dark fw-bold mb-3" data-bs-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer type="text/javascript">
+  var endpointUrls = {
+    codeValidationUrl: "{% url 'ajax_code_validation' %}",
+    emailConfirmationUrl: "{% url 'ajax_email_confirmation' %}",
+    emailReconfirmationUrl: "{% url 'ajax_email_reconfirmation' %}",
+    formSuccessUrl: "{% url 'form_success' %}",
+    formValidationUrl: "{% url 'ajax_feedback_form_validation' %}"
+  }
+</script>
+
+<script defer src="{% static 'feedback_form/js/scripts.js' %}"></script>

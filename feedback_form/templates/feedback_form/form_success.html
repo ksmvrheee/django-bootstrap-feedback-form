@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+      * {
+        font-family: Roboto, system-ui, sans-serif;
+        font-size: 1.15rem;
+      }
+    </style>
+    <!-- Page title -->
+    <title>Success!</title>
+  </head>
+  <body class="h-100">
+    <div class="d-flex justify-content-center align-items-center px-2 h-100">
+      <div class="text-center">
+        <h1 class="display-4 fw-bold mb-0">Success!</h1>
+        <p class="display-6">Your message has been sent!</p>
+        <p id="redirectTimer" class="text-secondary fst-italic mt-5">redirecting after 5 seconds...</p>
+      </div>
+    </div>
+    <script defer type="text/javascript">
+      redirectTimer = document.getElementById('redirectTimer');
+      var secondsRemaining = 5;
+
+      timerInterval = setInterval(function() {
+        secondsRemaining--;
+        if (secondsRemaining > 0) {
+          redirectTimer.textContent = 'redirecting after ' + secondsRemaining;
+
+          if (secondsRemaining > 1) {
+            redirectTimer.textContent += ' seconds...'
+          } else {
+            redirectTimer.textContent += ' second...'
+          }
+
+        } else {
+          clearInterval(timerInterval);
+          {% if not form_redirect_address %}
+            const referrerCookie = document.cookie.split('; ').find(row => row.startsWith('ff_referrer='));
+            if (referrerCookie) {
+              const referrerCookieValue = referrerCookie.split('=')[1];
+              if (referrerCookieValue){
+                document.cookie = 'ff_referrer' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+                window.location.replace(referrerCookieValue);
+              }
+            } else {
+              window.location.href = window.location.origin + "/";
+            }
+          {% else %}
+            document.cookie = 'ff_referrer' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            window.location.replace('{{ form_redirect_address }}');
+          {% endif %}
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

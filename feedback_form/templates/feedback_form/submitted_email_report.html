@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="height: 100%;
+      font-size: 1.35rem;
+      line-height: 125%;
+      padding: 8% 10%;
+      font-family: system-ui, sans-serif;
+      font-weight: 400;
+      background-color: lightgray;
+      margin-bottom: 1rem;">
+  <div style="padding: 15%;
+      background-color: white;
+      border-radius: 25px;">
+    <p style="margin-bottom: 1rem;">Hello!</p>
+    <p style="margin-bottom: 1rem;">A new letter has been sent via the feedback form!</p>
+    <p style="margin-bottom: 1rem; font-weight: 500;">Sender: <a href="mailto:{{ user_email }}" style="color: black; font-weight: bold;">{{ user_email }}</a></p>
+    <p style="margin-bottom: 1rem; font-weight: 500;">Text:</p>
+    <p style="margin-bottom: 1rem;">{{ user_message }}</p>
+    <hr style="color: lightgray; margin-bottom: 1rem;">
+    <p style="color: gray; font-size: 1.1rem;">This letter is automatically generated. No need to try to reply to it, reply to the sender of the letter above.</p>
+  </div>
+</body>
+</html>

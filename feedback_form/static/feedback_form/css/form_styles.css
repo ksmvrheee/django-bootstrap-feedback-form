@@ -1,0 +1,94 @@
+.feedback-form-control:focus {
+  border-color: #adadad;
+  -webkit-box-shadow: 0 0 0 .25rem rgba(71, 71, 71, 0.25);
+          box-shadow: 0 0 0 .25rem rgba(71, 71, 71, 0.25);
+}
+
+#feedbackModalBtnClose:focus {
+  border-color: #adadad;
+  -webkit-box-shadow: 0 0 0 .25rem rgba(71, 71, 71, 0.25);
+          box-shadow: 0 0 0 .25rem rgba(71, 71, 71, 0.25);
+}
+
+@media screen and (max-width: 352px) {
+  .g-recaptcha {
+    -webkit-transform:scale(0.89);
+        -ms-transform:scale(0.89);
+            transform:scale(0.89);
+    -webkit-transform-origin:0 0;
+        -ms-transform-origin:0 0;
+            transform-origin:0 0;
+    margin-bottom: -17.2px;
+  }
+}
+
+.g-recaptcha > div {
+  width: 100% !important;
+}
+
+.g-recaptcha > div > div {
+  margin: 4px auto !important;
+  /*text-align: center;*/
+  width: auto !important;
+  height: auto !important;
+}
+
+#rc-imageselect {
+  -ms-transform:scale(0.77);
+      transform:scale(0.77);
+  -webkit-transform:scale(0.77);
+  -ms-transform-origin:0 0;
+      transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+}
+
+@media screen and (min-width: 480px){
+  #rc-imageselect {
+    -ms-transform: none;
+        transform: none;
+    -webkit-transform: none;
+  }
+
+  .g-recaptcha iframe{
+    max-width: none;
+    -ms-transform: none;
+        transform: none;
+    -webkit-transform: none;
+  }
+}
+
+.resend-link-button {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  cursor: pointer;
+  /* transition: color .2s ease; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.resend-link-button:active {
+  color: #4d5154;
+}
+
+@-webkit-keyframes waiting-animation {
+  0% { color: #000; }
+  50% { color: #808080; }
+  100% { color: #000; }
+}
+
+@keyframes waiting-animation {
+  0% { color: #000; }
+  50% { color: #808080; }
+  100% { color: #000; }
+}
+
+.waiting {
+  -webkit-animation: waiting-animation infinite;
+          animation: waiting-animation infinite;
+  -webkit-animation-duration: 1.75s;
+          animation-duration: 1.75s;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}

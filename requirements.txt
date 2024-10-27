@@ -1,0 +1,4 @@
+Django>=4.2,<6.0
+djangorestframework>=3.15.2,<4.0
+requests>=2.30.0,<3.0
+responses>=0.25.0,<0.30.0  # for the testing purposes only
