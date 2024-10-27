@@ -3,7 +3,7 @@ ______________________________
 
 This app offers a way to create a responsive bootstrap-styled email-driven feedback form with a captcha and an email confirmation feature to your Django web-app hassle-free! The form itself is rendered on the page with the template tag while the form usage sessions are stored in the database. The initial validation and the UI manipulations are powered by JavaScript code which communicates with the server side via AJAX.
 
-See the detailed documentation `here <docs/index.rst>`_.
+See the detailed documentation `here <https://github.com/ksmvrheee/django-bootstrap-feedback-form/blob/main/docs/index.rst>`_.
 
 Quick Start
 -----------
