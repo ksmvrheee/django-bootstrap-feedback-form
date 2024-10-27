@@ -8,7 +8,7 @@ There are few problems and legal liabilities associated with using this applicat
 
 3. If you use the ``mail_admins`` built-in Django logging handler (or something with a similar functionality), you may accidentally send a sensitive data (like an email or ip address) through the email. The ``@sensitive_variables`` decorator is used for every form-related view here to sanitize the data, but there's no warranty. This is applicable to all Django apps unfortunately.
 
-4. Therefore, if applicable, you may need to establish some *Privacy Policy / Terms ofService* or something like that on your site or app.
+4. Therefore, if applicable, you may need to establish some *Privacy Policy / Terms of Service* or something like that on your site or app.
 
 5. Also some SMTP services tend to not return an errors even if sending the letter goes wrong. That means that it's impossible to catch the issues of that kind on the backend (or at least it is not optimal to do so). But it mainly affects some none-existing email address or host, so it should not affect the full cycle of the form submission (because of the email address confirmation feature), so it's probably fine. Probably.
 
