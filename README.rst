@@ -54,6 +54,8 @@ Quick Start
     {% load feedback_form %}
     {% render_feedback_form %}
 
+Keep in mind that ``Bootstrap 5`` js and css files must be included on the same page.
+
 10. Launch the server and check that everything works fine.
 
 Potential Problems and Liabilities
