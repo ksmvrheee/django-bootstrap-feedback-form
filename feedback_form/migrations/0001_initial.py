@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('session_identifier', models.CharField(max_length=255)),
                 ('email_hash', models.CharField(max_length=128)),
                 ('confirmation_code_hash', models.CharField(max_length=128)),
-                ('resending_attempts_left', models.IntegerField(default=3)),
+                ('resending_attempts_left', models.IntegerField(default=2)),
                 ('validation_attempts_left', models.IntegerField(default=10)),
                 ('submission_attempts_left', models.IntegerField(default=3)),
                 ('cooldown_expiry', models.DateTimeField()),
