@@ -43,5 +43,3 @@ jobs:
       - name: Publish package distributions to PyPI
         if: success()
         uses: pypa/gh-action-pypi-publish@unstable/v1
-        with:
-          package-Dir: ./dist
